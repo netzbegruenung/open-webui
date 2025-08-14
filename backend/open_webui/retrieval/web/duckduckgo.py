@@ -26,6 +26,8 @@ def search_duckduckgo(
     search_results = []
     with DDGS() as ddgs:
         # Use the ddgs.text() method to perform the search
+        if filter_list:
+            query = query + " site:"+" OR site:".join(filter_list)
         try:
             search_results = ddgs.text(
                 query, safesearch="moderate", max_results=count, backend="lite"
