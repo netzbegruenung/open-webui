@@ -36,6 +36,8 @@ def search_google_pse(
 
     while count > 0:
         num_results_this_page = min(count, 10)  # Google PSE max results per page is 10
+        if filter_list:
+            query = query + " site:"+" OR site:".join(filter_list)
         params = {
             "cx": search_engine_id,
             "q": query,

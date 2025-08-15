@@ -23,6 +23,8 @@ def search_bing(
     filter_list: Optional[list[str]] = None,
 ) -> list[SearchResult]:
     mkt = locale
+    if filter_list:
+        query = query + " site:"+" OR site:".join(filter_list)
     params = {"q": query, "mkt": mkt, "count": count}
     headers = {"Ocp-Apim-Subscription-Key": subscription_key}
 
